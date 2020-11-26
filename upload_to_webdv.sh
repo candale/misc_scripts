@@ -20,10 +20,10 @@ upload_dir_files() {
 
     index=0
     for file in $src_dir/*; do
-	name=$(basename "$file")
-        curl --progress-bar -u "$username:$pass" -T "$file" "$target_remote_url/$name"
-	index=$((index+1))
-	echo "File $index out of $num_files"
+    	name=$(basename "$file")
+            curl --progress-bar -u "$username:$pass" -T "$file" "$target_remote_url/$name"
+    	index=$((index+1))
+    	echo "File $index out of $num_files"
     done
 }
 
@@ -31,23 +31,23 @@ upload_dir_files() {
 case $1 in
     upload-dir)
         shift
-	src_dir=$1
-	shift
-	dest_url=$1
-	if [ -z "$src_dir" ]; then
-	    echo "You must provide a target dir to upload files from"
-	    exit 1
-	fi
-	if [ -z "$dest_url" ]; then
-            echo "You must provide the target WEBDV ULR with destination dir"
-	    exit 1
-	fi
+    	src_dir=$1
+    	shift
+    	dest_url=$1
+    	if [ -z "$src_dir" ]; then
+    	    echo "You must provide a target dir to upload files from"
+    	    exit 1
+    	fi
+    	if [ -z "$dest_url" ]; then
+                echo "You must provide the target WEBDV ULR with destination dir"
+    	    exit 1
+    	fi
 
-        upload_dir_files "$(realpath "$src_dir")" "$dest_url"
-	;;
+            upload_dir_files "$(realpath "$src_dir")" "$dest_url"
+	   ;;
     *)
-	echo "Upload files though WEBDV"
-	echo "Usage: upload-dir target-dir"
-	;;
+    	echo "Upload files though WEBDV"
+    	echo "Usage: upload-dir target-dir"
+    	;;
 esac
 

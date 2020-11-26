@@ -1,6 +1,6 @@
 """
 Download link for video does not come with a content-length header but
-the player works by fetching small parts of the videos; those small 
+the player works by fetching small parts of the videos; those small
 parts do have the content-length
 """
 import requests
